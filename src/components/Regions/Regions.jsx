@@ -1,10 +1,23 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Regions.module.css";
+import { MapContainer, TileLayer, Polygon, useMapEvent } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+
+function MyComponent(props) {
+  useMapEvent("click", (event) => {
+    const point = event.latlng;
+    props.setPolygon((prev) => {
+      return [...prev, [point.lat, point.lng]];
+    });
+  });
+  return null;
+}
 
 const Regions = (props) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [polygon, setPolygon] = useState([]);
 
   let navigate = useNavigate();
 
@@ -51,6 +64,20 @@ const Regions = (props) => {
         </div>
         <button>ADD</button>
       </form>
+
+      <MapContainer
+        center={[51.505, -0.09]}
+        zoom={13}
+        scrollWheelZoom={false}
+        style={{ height: "500px" }}
+      >
+        <TileLayer
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+        />
+        <Polygon positions={polygon} />
+        <MyComponent setPolygon={setPolygon} />
+      </MapContainer>
     </>
   );
 };
