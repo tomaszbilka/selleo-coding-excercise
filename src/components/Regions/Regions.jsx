@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./Regions.module.css";
 
 const Regions = (props) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+
+  let navigate = useNavigate();
 
   const nameInputChangeHandler = (event) => {
     setName(event.target.value);
@@ -22,6 +25,7 @@ const Regions = (props) => {
     };
 
     props.onAdd(region);
+    navigate("/regions");
   };
 
   return (
