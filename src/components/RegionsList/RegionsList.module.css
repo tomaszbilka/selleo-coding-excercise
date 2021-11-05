@@ -1,0 +1,21 @@
+.emptyInfo {
+  text-align: center;
+  color: #d38282;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+hr {
+  margin-bottom: 30px;
+  margin-right: 50%;
+  border: 2px dotted #1976d2;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
