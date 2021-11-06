@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { MapContainer, TileLayer, Polygon, useMapEvent } from 'react-leaflet';
+import { MapContainer, TileLayer, Polygon } from 'react-leaflet';
 
 const SingleRegion = (props) => {
   const { id } = useParams();

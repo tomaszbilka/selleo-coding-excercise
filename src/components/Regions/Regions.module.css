@@ -15,4 +15,13 @@
 
 .mapWrapp {
   margin: 30px 8px 0;
+  position: relative;
+}
+
+.info {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.6);
+  letter-spacing: 1.5px;
 }

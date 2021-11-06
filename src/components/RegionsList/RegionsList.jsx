@@ -12,7 +12,11 @@ const RegionsList = (props) => {
         {props.list.map((el) => {
           return (
             <>
-              <Link to={`/regions/${el.id}`}>
+              <Link
+                key={el.id}
+                to={`/regions/${el.id}`}
+                style={{ textDecoration: 'none', color: '#000' }}
+              >
                 <li>{el.name}</li>
               </Link>
               <hr />
