@@ -1,21 +1,26 @@
-import { Link } from 'react-router-dom';
-import styles from './RegionsList.module.css';
+import { Link } from "react-router-dom";
+import styles from "./RegionsList.module.css";
+import { useContext } from "react";
+import { RegionContext } from "../../store";
 
-const RegionsList = (props) => {
-  if (props.list.length === 0) {
+const RegionsList = () => {
+  const ctx = useContext(RegionContext);
+
+  if (ctx.length === 0) {
     return <p className={styles.emptyInfo}>no regions added yet!</p>;
   }
 
   return (
     <>
+      <h3>Region list</h3>
       <ul>
-        {props.list.map((el) => {
+        {ctx.map((el) => {
           return (
             <>
               <Link
                 key={el.id}
                 to={`/regions/${el.id}`}
-                style={{ textDecoration: 'none', color: '#000' }}
+                style={{ textDecoration: "none", color: "#000" }}
               >
                 <li>{el.name}</li>
               </Link>
